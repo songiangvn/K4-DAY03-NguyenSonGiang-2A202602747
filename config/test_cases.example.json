@@ -2,36 +2,36 @@
   {
     "id": "TC01",
     "type": "direct_query",
-    "question": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
-    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt, không cần gọi bất kỳ Tool nào.",
+    "question": "Chào bạn, cho tôi hỏi quy trình khám bệnh tại Hệ thống Y tế Vinmec gồm những bước cơ bản nào?",
+    "expected_behavior": "Agent nhận ra đây là câu hỏi kiến thức chung, trả lời trực tiếp từ System Prompt mà KHÔNG gọi bất kỳ Tool nào (Final Answer ngay Step 1).",
     "complexity": "Low"
   },
   {
     "id": "TC02",
     "type": "single_tool_query",
-    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
-    "expected_behavior": "Agent nhận diện nhu cầu tra cứu, tự động phát sinh Tool Call 'academic_query' với mã SV2026001.",
+    "question": "Tôi muốn khám chuyên khoa Tiêu hóa, cho tôi xem những bác sĩ nào còn trống lịch và khung giờ cụ thể.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu dữ liệu thời gian thực, phát sinh đúng 1 Tool Call 'find_doctor_schedule' với specialty='Tiêu hóa', rồi tổng hợp danh sách bác sĩ kèm khung giờ thật từ Observation.",
     "complexity": "Medium"
   },
   {
     "id": "TC03",
     "type": "appointment_booking",
-    "question": "TODO: [Học viên tự viết câu hỏi yêu cầu Agent đặt lịch hẹn tư vấn học vụ]",
-    "expected_behavior": "Agent tự động phát sinh Tool Call 'schedule_appointment' với đúng thời gian và thông tin sinh viên.",
+    "question": "TODO: [Học viên tự viết câu hỏi yêu cầu Agent đặt lịch khám với một bác sĩ cụ thể]",
+    "expected_behavior": "Agent trích xuất đầy đủ tham số từ câu hỏi và gọi Tool 'book_medical_appointment' với doctor_id='BS004', date='2026-09-15', time_slot='09:00', patient_name='Nguyễn Sơn Giang'. Kết quả trả về mã phiếu hẹn VM-xxx và Agent xác nhận lại cho người bệnh.",
     "complexity": "Medium"
   },
   {
     "id": "TC04",
     "type": "multi_step_reasoning",
-    "question": "TODO: [Học viên tự viết câu hỏi yêu cầu Agent suy luận ReAct đa bước (Tra cứu -> Đặt lịch với Cố vấn)]",
-    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct: Tra cứu cố vấn học tập của sinh viên trước, sau đó tiến hành đặt lịch hẹn.",
+    "question": "TODO: [Học viên tự viết câu hỏi yêu cầu Agent suy luận đa bước: Tra cứu bác sĩ theo triệu chứng -> Đặt lịch khám]",
+    "expected_behavior": "Agent thực hiện chuỗi ReAct đa bước: (1) gọi 'find_doctor_schedule' với symptom='đau dạ dày' để suy ra chuyên khoa Tiêu hóa và lấy danh sách bác sĩ kèm doctor_id; (2) đọc Observation, chọn bác sĩ nhiều kinh nghiệm nhất và khung giờ trống sớm nhất; (3) gọi 'book_medical_appointment' với doctor_id lấy được từ bước 1. Trace log phải có ÍT NHẤT 2 lượt TOOL_EXECUTION nối tiếp nhau.",
     "complexity": "High"
   },
   {
     "id": "TC05",
     "type": "edge_case_handling",
-    "question": "TODO: [Học viên tự viết câu hỏi tra cứu mã sinh viên không tồn tại (ví dụ SV9999999)]",
-    "expected_behavior": "Agent nhận kết quả NOT_FOUND từ Tool và đưa ra phản hồi lịch sự, chính xác không bịa đặt dữ liệu.",
+    "question": "TODO: [Học viên tự viết câu hỏi tra cứu chuyên khoa/bác sĩ không tồn tại để kiểm tra Anti-Hallucination]",
+    "expected_behavior": "Agent nhận kết quả NOT_FOUND từ Tool (Vinmec chưa có chuyên khoa Ung bướu và không tồn tại bác sĩ BS999), phản hồi trung thực rằng không có dữ liệu, đề xuất danh sách chuyên khoa thực tế đang có, TUYỆT ĐỐI không bịa ra tên bác sĩ hay mã phiếu hẹn (Anti-Hallucination).",
     "complexity": "Medium"
   }
 ]

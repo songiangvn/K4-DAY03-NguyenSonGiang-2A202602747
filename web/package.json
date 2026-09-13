@@ -1,0 +1,23 @@
+{
+  "name": "vinmec-healthcare-agent-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Giao diện web cho Trợ lý Tư vấn Sức khỏe Vinmec (Lab 3 - ReAct Agent + MCP)",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "lucide-react": "^0.460.0",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5.7.3"
+  }
+}

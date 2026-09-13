@@ -1,0 +1,298 @@
+{
+  "_meta": {
+    "description": "Ho so benh an dien tu mo phong (Long-term Memory cua Agent) - du lieu phuc vu Lab 3, KHONG phai du lieu y te that",
+    "hospital": "Vinmec Times City",
+    "version": "2026.2.0",
+    "reference_date": "2026-09-13",
+    "disclaimer": "Agent chi TOM TAT tien su da ghi nhan va GOI Y bac si theo chuyen khoa. Agent KHONG chan doan benh va KHONG ke don thuoc."
+  },
+  "patients": {
+    "BN2024001": {
+      "patient_id": "BN2024001",
+      "full_name": "Nguyen Son Giang",
+      "phone": "0912345678",
+      "year_of_birth": 1998,
+      "gender": "Nam",
+      "blood_type": "O+",
+      "allergies": ["Penicillin"],
+      "chronic_conditions": ["Viem da day HP duong tinh"],
+      "visit_history": [
+        {
+          "visit_id": "V-2025-0312",
+          "date": "2025-03-12",
+          "specialty": "Tieu hoa",
+          "doctor_id": "BS001",
+          "doctor_name": "PGS.TS Nguyen Thanh Long",
+          "symptoms": "Dau thuong vi am i sau an, o hoi, day bung keo dai 3 tuan",
+          "diagnosis": "Viem da day HP duong tinh",
+          "treatment": "Phac do diet HP 14 ngay (khang sinh + PPI)",
+          "follow_up_note": "Hen noi soi kiem tra lai sau 3 thang. Kieng ruou bia, an dung gio.",
+          "outcome": "Cai thien"
+        },
+        {
+          "visit_id": "V-2025-0628",
+          "date": "2025-06-28",
+          "specialty": "Tieu hoa",
+          "doctor_id": "BS001",
+          "doctor_name": "PGS.TS Nguyen Thanh Long",
+          "symptoms": "Tai kham dinh ky, con day hoi nhe buoi sang",
+          "diagnosis": "Viem da day on dinh, HP am tinh sau dieu tri",
+          "treatment": "Duy tri che do an, khong dung thuoc them",
+          "follow_up_note": "Theo doi 6 thang. Neu dau tro lai can noi soi som.",
+          "outcome": "On dinh"
+        },
+        {
+          "visit_id": "V-2025-1105",
+          "date": "2025-11-05",
+          "specialty": "Co xuong khop",
+          "doctor_id": "BS004",
+          "doctor_name": "ThS.BS Pham Duc Manh",
+          "symptoms": "Dau that lung sau khi ngoi lam viec keo dai, te nhe chan phai",
+          "diagnosis": "Thoai hoa cot song that lung muc do nhe",
+          "treatment": "Vat ly tri lieu 10 buoi, huong dan tu the ngoi dung",
+          "follow_up_note": "Tap the duc cot song deu dan, tranh ngoi qua 2 gio lien tuc.",
+          "outcome": "Cai thien"
+        }
+      ]
+    },
+    "BN2024002": {
+      "patient_id": "BN2024002",
+      "full_name": "Tran Thi Binh",
+      "phone": "0987654321",
+      "year_of_birth": 1985,
+      "gender": "Nu",
+      "blood_type": "A+",
+      "allergies": [],
+      "chronic_conditions": ["Trao nguoc da day thuc quan (GERD)"],
+      "visit_history": [
+        {
+          "visit_id": "V-2025-0220",
+          "date": "2025-02-20",
+          "specialty": "Tieu hoa",
+          "doctor_id": "BS002",
+          "doctor_name": "TS.BS Tran Thi Minh Hoa",
+          "symptoms": "O chua, nong rat sau xuong uc ve dem, kho nuot nhe",
+          "diagnosis": "Trao nguoc da day thuc quan do B",
+          "treatment": "PPI 8 tuan, nang dau giuong khi ngu",
+          "follow_up_note": "Tranh an truoc khi ngu 3 gio. Tai kham neu trieu chung tro lai.",
+          "outcome": "Cai thien"
+        },
+        {
+          "visit_id": "V-2025-0915",
+          "date": "2025-09-15",
+          "specialty": "Tieu hoa",
+          "doctor_id": "BS002",
+          "doctor_name": "TS.BS Tran Thi Minh Hoa",
+          "symptoms": "Trieu chung trao nguoc tai phat sau khi ngung thuoc",
+          "diagnosis": "GERD tai phat",
+          "treatment": "PPI duy tri lieu thap, dieu chinh che do an",
+          "follow_up_note": "Can theo doi dai han. Neu tai phat lan 3 nen noi soi danh gia lai.",
+          "outcome": "Dang theo doi"
+        }
+      ]
+    },
+    "BN2024003": {
+      "patient_id": "BN2024003",
+      "full_name": "Le Van Hung",
+      "phone": "0905112233",
+      "year_of_birth": 1962,
+      "gender": "Nam",
+      "blood_type": "B+",
+      "allergies": ["Aspirin"],
+      "chronic_conditions": ["Tang huyet ap do 1", "Roi loan lipid mau"],
+      "visit_history": [
+        {
+          "visit_id": "V-2025-0418",
+          "date": "2025-04-18",
+          "specialty": "Tim mach",
+          "doctor_id": "BS003",
+          "doctor_name": "GS.TS Le Quang Vinh",
+          "symptoms": "Hoi hop danh trong nguc khi gang suc, huyet ap 150/95",
+          "diagnosis": "Tang huyet ap do 1, roi loan lipid mau",
+          "treatment": "Thuoc ha ap hang ngay + statin, theo doi huyet ap tai nha",
+          "follow_up_note": "Tai kham moi 3 thang. Giam muoi, tap the duc 30 phut/ngay.",
+          "outcome": "On dinh"
+        },
+        {
+          "visit_id": "V-2025-0722",
+          "date": "2025-07-22",
+          "specialty": "Tim mach",
+          "doctor_id": "BS003",
+          "doctor_name": "GS.TS Le Quang Vinh",
+          "symptoms": "Tai kham dinh ky, huyet ap trung binh 132/84",
+          "diagnosis": "Tang huyet ap kiem soat tot",
+          "treatment": "Duy tri phac do hien tai",
+          "follow_up_note": "Tiep tuc theo doi huyet ap, tai kham sau 3 thang.",
+          "outcome": "On dinh"
+        },
+        {
+          "visit_id": "V-2025-1220",
+          "date": "2025-12-20",
+          "specialty": "Tim mach",
+          "doctor_id": "BS003",
+          "doctor_name": "GS.TS Le Quang Vinh",
+          "symptoms": "Thi thoang chong mat khi dung day nhanh",
+          "diagnosis": "Ha huyet ap tu the nhe, nghi do lieu thuoc",
+          "treatment": "Dieu chinh giam lieu thuoc ha ap",
+          "follow_up_note": "Theo doi sat trong 1 thang, bao ngay neu chong mat tang.",
+          "outcome": "Dang theo doi"
+        }
+      ]
+    },
+    "BN2024004": {
+      "patient_id": "BN2024004",
+      "full_name": "Pham Minh Khoa",
+      "phone": "0978554411",
+      "year_of_birth": 2019,
+      "gender": "Nam",
+      "blood_type": "O+",
+      "allergies": ["Hai san"],
+      "chronic_conditions": ["Hen phe quan tre em"],
+      "visit_history": [
+        {
+          "visit_id": "V-2025-0810",
+          "date": "2025-08-10",
+          "specialty": "Nhi khoa",
+          "doctor_id": "BS005",
+          "doctor_name": "TS.BS Hoang Thi Lan Anh",
+          "symptoms": "Ho ve dem, kho khe khi thay doi thoi tiet",
+          "diagnosis": "Hen phe quan muc do nhe",
+          "treatment": "Thuoc xit du phong, huong dan dung buong dem",
+          "follow_up_note": "Tranh khoi bui, long thu. Tai kham moi 3 thang.",
+          "outcome": "Cai thien"
+        },
+        {
+          "visit_id": "V-2026-0105",
+          "date": "2026-01-05",
+          "specialty": "Nhi khoa",
+          "doctor_id": "BS005",
+          "doctor_name": "TS.BS Hoang Thi Lan Anh",
+          "symptoms": "Con hen nhe khi troi lanh, van dung thuoc du phong deu",
+          "diagnosis": "Hen phe quan kiem soat mot phan",
+          "treatment": "Tang lieu du phong trong mua lanh",
+          "follow_up_note": "Theo doi so con hen hang thang, tai kham sau 3 thang.",
+          "outcome": "Dang theo doi"
+        }
+      ]
+    },
+    "BN2024005": {
+      "patient_id": "BN2024005",
+      "full_name": "Vu Thi Ngoc",
+      "phone": "0913778899",
+      "year_of_birth": 1993,
+      "gender": "Nu",
+      "blood_type": "AB+",
+      "allergies": [],
+      "chronic_conditions": [],
+      "visit_history": []
+    },
+    "BN2024006": {
+      "patient_id": "BN2024006",
+      "full_name": "Dao Quang Huy",
+      "phone": "0934221100",
+      "year_of_birth": 1979,
+      "gender": "Nam",
+      "blood_type": "A-",
+      "allergies": ["Sulfamid"],
+      "chronic_conditions": ["Dai thao duong type 2"],
+      "visit_history": [
+        {
+          "visit_id": "V-2024-1112",
+          "date": "2024-11-12",
+          "specialty": "Noi tiet",
+          "doctor_id": "BS012",
+          "doctor_name": "TS.BS Do Manh Cuong",
+          "symptoms": "Khat nuoc nhieu, tieu dem, sut 4kg trong 2 thang",
+          "diagnosis": "Dai thao duong type 2 moi chan doan, HbA1c 8.2%",
+          "treatment": "Metformin, tu van che do an va van dong",
+          "follow_up_note": "Xet nghiem HbA1c moi 3 thang. Tu theo doi duong huyet tai nha.",
+          "outcome": "Dang theo doi"
+        },
+        {
+          "visit_id": "V-2025-0520",
+          "date": "2025-05-20",
+          "specialty": "Noi tiet",
+          "doctor_id": "BS012",
+          "doctor_name": "TS.BS Do Manh Cuong",
+          "symptoms": "Tai kham dinh ky, HbA1c giam con 6.9%",
+          "diagnosis": "Dai thao duong type 2 kiem soat tot",
+          "treatment": "Duy tri Metformin lieu hien tai",
+          "follow_up_note": "Kham mat va than dinh ky moi nam de tam soat bien chung.",
+          "outcome": "On dinh"
+        },
+        {
+          "visit_id": "V-2026-0228",
+          "date": "2026-02-28",
+          "specialty": "Tim mach",
+          "doctor_id": "BS008",
+          "doctor_name": "TS.BS Nguyen Hai Yen",
+          "symptoms": "Kham tam soat tim mach theo chi dinh cua bac si Noi tiet",
+          "diagnosis": "Chua ghi nhan bien chung tim mach",
+          "treatment": "Khong dung thuoc tim mach, tiep tuc kiem soat duong huyet",
+          "follow_up_note": "Tam soat lai sau 12 thang.",
+          "outcome": "On dinh"
+        }
+      ]
+    },
+    "BN2024007": {
+      "patient_id": "BN2024007",
+      "full_name": "Nguyen Thi Mai",
+      "phone": "0967883322",
+      "year_of_birth": 1990,
+      "gender": "Nu",
+      "blood_type": "O-",
+      "allergies": ["Ibuprofen"],
+      "chronic_conditions": ["Dau nua dau Migraine"],
+      "visit_history": [
+        {
+          "visit_id": "V-2025-1001",
+          "date": "2025-10-01",
+          "specialty": "Than kinh",
+          "doctor_id": "BS011",
+          "doctor_name": "PGS.TS Bui Thi Kim Chi",
+          "symptoms": "Dau nua dau tung con kem buon non, so anh sang, 3-4 con moi thang",
+          "diagnosis": "Dau nua dau Migraine khong co tien trieu",
+          "treatment": "Thuoc cat con khi dau, ghi nhat ky con dau",
+          "follow_up_note": "Tranh thuc khuya va bo bua. Neu tren 4 con/thang can thuoc du phong.",
+          "outcome": "Cai thien"
+        },
+        {
+          "visit_id": "V-2026-0318",
+          "date": "2026-03-18",
+          "specialty": "Than kinh",
+          "doctor_id": "BS011",
+          "doctor_name": "PGS.TS Bui Thi Kim Chi",
+          "symptoms": "Tan suat con dau tang len 6 con/thang, kem mat ngu",
+          "diagnosis": "Migraine tan suat cao kem roi loan giac ngu",
+          "treatment": "Bo sung thuoc du phong hang ngay, ve sinh giac ngu",
+          "follow_up_note": "Theo doi nhat ky con dau 8 tuan roi danh gia lai hieu qua du phong.",
+          "outcome": "Dang theo doi"
+        }
+      ]
+    },
+    "BN2024008": {
+      "patient_id": "BN2024008",
+      "full_name": "Hoang Van Tien",
+      "phone": "0945667788",
+      "year_of_birth": 2001,
+      "gender": "Nam",
+      "blood_type": "B-",
+      "allergies": [],
+      "chronic_conditions": [],
+      "visit_history": [
+        {
+          "visit_id": "V-2023-0405",
+          "date": "2023-04-05",
+          "specialty": "Tai mui hong",
+          "doctor_id": "BS010",
+          "doctor_name": "ThS.BS Trinh Van Khoa",
+          "symptoms": "Nghet mui keo dai, dau vung tran khi cui nguoi",
+          "diagnosis": "Viem xoang ham cap",
+          "treatment": "Khang sinh 10 ngay, rua mui bang nuoc muoi sinh ly",
+          "follow_up_note": "Neu tai phat tren 3 lan/nam can chup CT xoang danh gia.",
+          "outcome": "Khoi"
+        }
+      ]
+    }
+  }
+}

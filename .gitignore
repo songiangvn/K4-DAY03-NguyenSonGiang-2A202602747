@@ -14,3 +14,14 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# Ban phac thao UI goc (khong can day len repo nop bai)
+ref/extracted/
+
+# Next.js build output & dependencies
+web/node_modules/
+web/.next/
+web/out/
+
+# Ban phac thao UI goc dang nen (khong can trong repo nop bai)
+ref/*.zip

@@ -1,0 +1,368 @@
+{
+  "_meta": {
+    "description": "Danh muc bac si va lich lam viec tai He thong Y te Vinmec (du lieu mo phong phuc vu Lab 3)",
+    "hospital": "Vinmec Times City",
+    "version": "2026.2.0",
+    "reference_date": "2026-09-13"
+  },
+  "specialties": {
+    "Tieu hoa": [
+      "BS001",
+      "BS002",
+      "BS007"
+    ],
+    "Tim mach": [
+      "BS003",
+      "BS008"
+    ],
+    "Co xuong khop": [
+      "BS004"
+    ],
+    "Nhi khoa": [
+      "BS005",
+      "BS009"
+    ],
+    "Da lieu": [
+      "BS006"
+    ],
+    "Tai mui hong": [
+      "BS010"
+    ],
+    "Than kinh": [
+      "BS011"
+    ],
+    "Noi tiet": [
+      "BS012"
+    ]
+  },
+  "symptom_to_specialty": {
+    "sut can khong ro nguyen nhan": "Noi tiet",
+    "roi loan tuyen giap": "Noi tiet",
+    "thoai hoa dot song": "Co xuong khop",
+    "roi loan tieu hoa": "Tieu hoa",
+    "tre cham tang can": "Nhi khoa",
+    "dau bung day hoi": "Tieu hoa",
+    "danh trong nguc": "Tim mach",
+    "khat nuoc nhieu": "Noi tiet",
+    "sot cao tre em": "Nhi khoa",
+    "dau thuong vi": "Tieu hoa",
+    "huyet ap cao": "Tim mach",
+    "tre bieng an": "Nhi khoa",
+    "noi man ngua": "Da lieu",
+    "mun trung ca": "Da lieu",
+    "dau vai gay": "Co xuong khop",
+    "te tay chan": "Co xuong khop",
+    "dau nua dau": "Than kinh",
+    "chuong bung": "Tieu hoa",
+    "dau da day": "Tieu hoa",
+    "trao nguoc": "Tieu hoa",
+    "viem xoang": "Tai mui hong",
+    "tieu duong": "Noi tiet",
+    "tieu chay": "Tieu hoa",
+    "ho tre em": "Nhi khoa",
+    "nghet mui": "Tai mui hong",
+    "chong mat": "Than kinh",
+    "buon non": "Tieu hoa",
+    "dau nguc": "Tim mach",
+    "dau lung": "Co xuong khop",
+    "dau khop": "Co xuong khop",
+    "rung toc": "Da lieu",
+    "dau hong": "Tai mui hong",
+    "dau bung": "Tieu hoa",
+    "kho tieu": "Tieu hoa",
+    "day hoi": "Tieu hoa",
+    "kho tho": "Tim mach",
+    "hoi hop": "Tim mach",
+    "viem da": "Da lieu",
+    "dau dau": "Than kinh",
+    "mat ngu": "Than kinh",
+    "tao bon": "Tieu hoa",
+    "o chua": "Tieu hoa",
+    "u tai": "Tai mui hong",
+    "o hoi": "Tieu hoa"
+  },
+  "doctors": {
+    "BS001": {
+      "doctor_id": "BS001",
+      "full_name": "PGS.TS Nguyen Thanh Long",
+      "specialty": "Tieu hoa",
+      "title": "Pho Giao su, Tien si Y khoa",
+      "experience_years": 22,
+      "room": "P.304 - Toa nha B",
+      "consultation_fee_vnd": 500000,
+      "available_slots": {
+        "2026-09-14": [
+          "08:00",
+          "09:00",
+          "10:30",
+          "14:00"
+        ],
+        "2026-09-15": [
+          "08:30",
+          "09:30",
+          "15:00"
+        ],
+        "2026-09-16": [
+          "08:00",
+          "10:00"
+        ]
+      }
+    },
+    "BS002": {
+      "doctor_id": "BS002",
+      "full_name": "TS.BS Tran Thi Minh Hoa",
+      "specialty": "Tieu hoa",
+      "title": "Tien si, Bac si Noi tru",
+      "experience_years": 15,
+      "room": "P.306 - Toa nha B",
+      "consultation_fee_vnd": 400000,
+      "available_slots": {
+        "2026-09-14": [
+          "09:30",
+          "15:30"
+        ],
+        "2026-09-15": [
+          "08:00",
+          "10:00",
+          "14:30",
+          "16:00"
+        ],
+        "2026-09-16": [
+          "09:00",
+          "11:00"
+        ]
+      }
+    },
+    "BS007": {
+      "doctor_id": "BS007",
+      "full_name": "BS.CKII Dang Quoc Bao",
+      "specialty": "Tieu hoa",
+      "title": "Bac si Chuyen khoa II",
+      "experience_years": 18,
+      "room": "P.308 - Toa nha B",
+      "consultation_fee_vnd": 450000,
+      "available_slots": {
+        "2026-09-14": [],
+        "2026-09-15": [],
+        "2026-09-16": [
+          "14:00",
+          "15:30"
+        ]
+      }
+    },
+    "BS003": {
+      "doctor_id": "BS003",
+      "full_name": "GS.TS Le Quang Vinh",
+      "specialty": "Tim mach",
+      "title": "Giao su, Tien si Y khoa",
+      "experience_years": 30,
+      "room": "P.201 - Toa nha A",
+      "consultation_fee_vnd": 800000,
+      "available_slots": {
+        "2026-09-14": [
+          "10:00"
+        ],
+        "2026-09-15": [
+          "08:00",
+          "09:00"
+        ],
+        "2026-09-16": []
+      }
+    },
+    "BS008": {
+      "doctor_id": "BS008",
+      "full_name": "TS.BS Nguyen Hai Yen",
+      "specialty": "Tim mach",
+      "title": "Tien si, Bac si Noi tru",
+      "experience_years": 13,
+      "room": "P.203 - Toa nha A",
+      "consultation_fee_vnd": 450000,
+      "available_slots": {
+        "2026-09-14": [
+          "08:30",
+          "13:30",
+          "16:00"
+        ],
+        "2026-09-15": [
+          "10:30",
+          "14:00"
+        ],
+        "2026-09-16": [
+          "08:00",
+          "09:30",
+          "15:00"
+        ]
+      }
+    },
+    "BS004": {
+      "doctor_id": "BS004",
+      "full_name": "ThS.BS Pham Duc Manh",
+      "specialty": "Co xuong khop",
+      "title": "Thac si, Bac si Chuyen khoa I",
+      "experience_years": 12,
+      "room": "P.115 - Toa nha A",
+      "consultation_fee_vnd": 350000,
+      "available_slots": {
+        "2026-09-14": [
+          "08:00",
+          "09:00",
+          "13:30",
+          "15:00"
+        ],
+        "2026-09-15": [
+          "09:00",
+          "14:00"
+        ],
+        "2026-09-16": [
+          "08:30",
+          "10:30",
+          "14:00"
+        ]
+      }
+    },
+    "BS005": {
+      "doctor_id": "BS005",
+      "full_name": "TS.BS Hoang Thi Lan Anh",
+      "specialty": "Nhi khoa",
+      "title": "Tien si, Bac si Chuyen khoa II",
+      "experience_years": 18,
+      "room": "P.402 - Toa nha C",
+      "consultation_fee_vnd": 450000,
+      "available_slots": {
+        "2026-09-14": [
+          "08:00",
+          "08:30",
+          "09:00",
+          "14:00",
+          "14:30"
+        ],
+        "2026-09-15": [
+          "08:00",
+          "09:30",
+          "15:00"
+        ],
+        "2026-09-16": [
+          "08:00",
+          "10:00",
+          "13:30"
+        ]
+      }
+    },
+    "BS009": {
+      "doctor_id": "BS009",
+      "full_name": "BS.CKI Ngo Thi Thu Ha",
+      "specialty": "Nhi khoa",
+      "title": "Bac si Chuyen khoa I",
+      "experience_years": 8,
+      "room": "P.404 - Toa nha C",
+      "consultation_fee_vnd": 300000,
+      "available_slots": {
+        "2026-09-14": [
+          "10:00",
+          "10:30"
+        ],
+        "2026-09-15": [
+          "08:30",
+          "11:00",
+          "14:00"
+        ],
+        "2026-09-16": [
+          "09:00"
+        ]
+      }
+    },
+    "BS006": {
+      "doctor_id": "BS006",
+      "full_name": "BS.CKI Vu Minh Tuan",
+      "specialty": "Da lieu",
+      "title": "Bac si Chuyen khoa I",
+      "experience_years": 9,
+      "room": "P.508 - Toa nha C",
+      "consultation_fee_vnd": 300000,
+      "available_slots": {
+        "2026-09-14": [],
+        "2026-09-15": [
+          "10:00",
+          "11:00",
+          "16:00"
+        ],
+        "2026-09-16": [
+          "09:00",
+          "15:00"
+        ]
+      }
+    },
+    "BS010": {
+      "doctor_id": "BS010",
+      "full_name": "ThS.BS Trinh Van Khoa",
+      "specialty": "Tai mui hong",
+      "title": "Thac si, Bac si Chuyen khoa I",
+      "experience_years": 11,
+      "room": "P.210 - Toa nha B",
+      "consultation_fee_vnd": 350000,
+      "available_slots": {
+        "2026-09-14": [
+          "09:00",
+          "14:30"
+        ],
+        "2026-09-15": [
+          "08:00",
+          "10:30",
+          "15:30"
+        ],
+        "2026-09-16": [
+          "08:30",
+          "13:00"
+        ]
+      }
+    },
+    "BS011": {
+      "doctor_id": "BS011",
+      "full_name": "PGS.TS Bui Thi Kim Chi",
+      "specialty": "Than kinh",
+      "title": "Pho Giao su, Tien si Y khoa",
+      "experience_years": 25,
+      "room": "P.601 - Toa nha A",
+      "consultation_fee_vnd": 600000,
+      "available_slots": {
+        "2026-09-14": [
+          "10:00",
+          "11:00"
+        ],
+        "2026-09-15": [
+          "09:00",
+          "14:00",
+          "16:00"
+        ],
+        "2026-09-16": [
+          "08:00",
+          "10:30"
+        ]
+      }
+    },
+    "BS012": {
+      "doctor_id": "BS012",
+      "full_name": "TS.BS Do Manh Cuong",
+      "specialty": "Noi tiet",
+      "title": "Tien si, Bac si Noi tru",
+      "experience_years": 16,
+      "room": "P.305 - Toa nha A",
+      "consultation_fee_vnd": 480000,
+      "available_slots": {
+        "2026-09-14": [
+          "08:00",
+          "13:00"
+        ],
+        "2026-09-15": [
+          "09:30",
+          "14:30"
+        ],
+        "2026-09-16": [
+          "08:00",
+          "10:00",
+          "15:00"
+        ]
+      }
+    }
+  }
+}
