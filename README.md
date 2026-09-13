@@ -81,13 +81,24 @@ flowchart TD
 
     Book{Muốn đặt lịch?}
     Book -->|Không| Final
-    Book -->|Có| B["🛠️ book_medical_appointment<br/>doctor_id TỪ Observation"]
-    B --> BObs["👁️ mã phiếu hẹn + Quick Note"] --> Final
+    Book -->|Có| Confirm{Đã chốt rõ<br/>bác sĩ + ngày + giờ?}
+
+    Confirm -->|CHƯA| AskUser["🏁 HỎI LẠI người bệnh<br/>không tự giữ chỗ"] --> End
+    Confirm -->|RỒI| B["🛠️ book_medical_appointment<br/>doctor_id TỪ Observation"]
+    B --> BObs["👁️ mã phiếu hẹn + Quick Note"] --> Old
+
+    Old{Đang đổi lịch?}
+    Old -->|Không| Final
+    Old -->|Có| C["🛠️ cancel_appointment<br/>hủy phiếu cũ, trả khung giờ"] --> Final
+
+    Start -.->|"hỏi/hủy lịch"| L["🛠️ list_my_appointments"] --> C
 
     Final["🏁 LLM tự tổng hợp & giải trình"] --> End([Trả lời])
 
     style Rank fill:#e7f8f0
     style B fill:#fff4e2
+    style C fill:#ffe8e8
+    style AskUser fill:#fff9e0
     style Final fill:#eaf7fb
 ```
 
@@ -178,7 +189,7 @@ Dự án hỗ trợ **3 provider**, đổi bằng cách sửa `.env` — không 
 │   └── 📄 app/globals.css        <-- Hệ thống thiết kế (màu, bố cục, responsive)
 │
 ├── 📁 tests/                     <-- 🧪 KIỂM THỬ TỰ ĐỘNG
-│   ├── 📄 test_tools.py          <-- 90 phép kiểm thử tầng công cụ & MCP (offline)
+│   ├── 📄 test_tools.py          <-- 112 phép kiểm thử tầng công cụ & MCP (offline)
 │   ├── 📄 verify_trace.py        <-- Kiểm định chất lượng Waterfall Trace Log
 │   └── 📄 reset_data.py          <-- Khôi phục dữ liệu mô phỏng về nguyên trạng
 │

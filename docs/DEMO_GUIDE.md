@@ -220,9 +220,21 @@ flowchart TD
     FObs --> Book
 
     Book -->|Không| Final
-    Book -->|Có| B["🛠️ ACTION: book_medical_appointment<br/>doctor_id lấy TỪ OBSERVATION"]
+    Book -->|Có| Confirm{Đã chốt rõ<br/>bác sĩ + ngày + giờ?}
+
+    Confirm -->|CHƯA| AskUser["🏁 HỎI LẠI người bệnh<br/>Trình bày khung trống, chờ xác nhận<br/>KHÔNG gọi Tool đặt lịch"]
+    AskUser --> End
+
+    Confirm -->|RỒI| B["🛠️ ACTION: book_medical_appointment<br/>doctor_id lấy TỪ OBSERVATION"]
     B --> BObs["👁️ OBSERVATION:<br/>mã phiếu hẹn + Quick Note"]
-    BObs --> Final
+    BObs --> Old{Đang đổi lịch?}
+    Old -->|Không| Final
+    Old -->|Có| C["🛠️ ACTION: cancel_appointment<br/>hủy phiếu CŨ, trả khung giờ về lịch trống"]
+    C --> Final
+
+    Start -.->|"hỏi/hủy lịch"| L["🛠️ ACTION: list_my_appointments"]
+    L --> LObs["👁️ OBSERVATION:<br/>các phiếu hẹn đang giữ chỗ"]
+    LObs --> C
 
     Final["🏁 FINAL ANSWER<br/>LLM tự tổng hợp, giải trình lý do chọn bác sĩ"]
     Final --> End([Trả lời người bệnh])
@@ -230,8 +242,14 @@ flowchart TD
     style H fill:#e7f8f0
     style Rank fill:#e7f8f0
     style B fill:#fff4e2
+    style C fill:#ffe8e8
+    style AskUser fill:#fff9e0
     style Final fill:#eaf7fb
 ```
+
+> 🛡️ **Nhánh vàng trong sơ đồ** (`Đã chốt rõ bác sĩ + ngày + giờ?`) là cơ chế **human-in-the-loop**:
+> nếu người bệnh chưa xác nhận khung giờ, Agent **dừng lại hỏi** thay vì tự giữ chỗ.
+> 🔴 **Nhánh đỏ** (`cancel_appointment`) đảm bảo mọi hành động ghi dữ liệu đều có đường lùi.
 
 ### 3.3. Điểm kỹ thuật nên nhấn mạnh
 
@@ -252,6 +270,23 @@ flowchart TD
 | 2 | `find_doctor_schedule` | 🔍 **Tra cứu** bác sĩ & khung giờ còn trống | *(linh hoạt)* | Tra được theo **chuyên khoa** hoặc **triệu chứng** — vì bệnh nhân thường không biết khoa nào |
 | 3 | `rank_doctors_for_patient` | 🏆 **Xếp hạng có giải trình** — chấm điểm bác sĩ theo tiền sử | `patient_id` | Thang 100 điểm **tất định**, trả kèm lý do từng bậc để thuyết phục người bệnh |
 | 4 | `book_medical_appointment` | 📅 **Đặt lịch** khám, khóa khung giờ | `doctor_id`, `date`, `time_slot`, `patient_name` | Ghi **bền vững** xuống file; đính kèm Quick Note; chống đặt trùng |
+| 5 | `list_my_appointments` | 📋 **Tra lịch hẹn** đang giữ chỗ của người bệnh | `patient_id` *hoặc* `patient_phone` | Giúp Agent biết người bệnh đang giữ những suất nào trước khi đổi/hủy |
+| 6 | `cancel_appointment` | ❌ **Hủy lịch** và trả khung giờ về lịch trống | `booking_id` | Cặp **đối xứng** với đặt lịch — giữ trạng thái hệ thống luôn nhất quán |
+
+### 🛡️ Hai nguyên tắc an toàn nên nhấn mạnh khi trình bày
+
+> **(a) Human-in-the-loop — không tự ý giữ chỗ.**
+> "Đặt lịch là hành động **ghi dữ liệu thật và khóa suất khám của người khác**, nên em quy định Agent
+> chỉ được gọi `book_medical_appointment` khi người bệnh đã chốt rõ **cả ba**: bác sĩ nào, ngày nào,
+> giờ nào. Nếu họ mới nói *'đặt lịch giúp tôi'*, Agent phải trình bày các khung trống rồi **hỏi lại** —
+> giống hệt cơ chế *accept/reject* của các coding agent. Test case **TC13** kiểm chứng tự động điều này:
+> trace log phải **KHÔNG** có lượt gọi `book_medical_appointment`."
+
+> **(b) Mọi hành động ghi đều có đường lùi.**
+> "Bản đầu tiên em chỉ có công cụ đặt lịch mà không có hủy, nên khi người bệnh đổi ý thì Agent trả lời
+> *'tôi không có quyền hủy lịch'* và để lại lịch cũ treo vô thời hạn. Em bổ sung cặp `list_my_appointments`
+> + `cancel_appointment`: hủy lịch sẽ **trả khung giờ về đúng vị trí** trong lịch trống, và đổi lịch trở
+> thành thao tác hai bước — đặt mới rồi hủy cũ, để người bệnh không bị giữ hai chỗ."
 
 ### 4.1. Giải thích thang điểm xếp hạng (tool số 3)
 
@@ -553,9 +588,26 @@ Kiểm tra nhanh: mở `http://localhost:8080/api/health` — phải thấy JSON
 > kê đơn, đổi phác đồ hay kết luận 'bệnh tái phát'. Riêng dấu hiệu cấp cứu có quy tắc ưu tiên cao
 > nhất: hướng dẫn gọi 115 thay vì đặt lịch. Em có test case TC12 kiểm tra riêng điều này."
 
+### ❓ "Agent có tự ý đặt lịch thay người dùng không?"
+
+> "Không — và đây là bài học em rút ra khi chạy thử. Bản đầu tiên Agent **tự chọn khung giờ rồi đặt luôn**
+> dù người bệnh chưa xác nhận, mà đặt lịch là hành động **khóa suất khám của người khác**. Em bổ sung
+> quy tắc: chỉ gọi `book_medical_appointment` khi người bệnh đã chốt rõ **cả ba** — bác sĩ, ngày, giờ.
+> Nếu chưa đủ, Agent trình bày khung trống rồi hỏi lại, giống cơ chế *accept/reject* của coding agent.
+> Test case **TC13** kiểm chứng tự động: `tests/verify_trace.py` có danh sách `FORBIDDEN_TOOLS` xác minh
+> trace log **không** chứa lượt gọi đặt lịch nào."
+
+### ❓ "Nếu người bệnh muốn đổi hoặc hủy lịch thì sao?"
+
+> "Em có cặp công cụ đối xứng `list_my_appointments` và `cancel_appointment`. Hủy lịch không chỉ đánh dấu
+> phiếu hẹn mà còn **trả khung giờ về đúng vị trí** trong lịch trống của bác sĩ, để người khác đặt được.
+> Đổi lịch là thao tác hai bước — đặt mới rồi hủy cũ — nên người bệnh không bao giờ bị giữ hai chỗ.
+> Trước khi có cặp này, Agent trả lời *'tôi không có quyền hủy lịch'* và để lịch cũ treo vô thời hạn;
+> đó là lỗi thiết kế vì **mọi hành động ghi dữ liệu đều phải có đường lùi**."
+
 ### ❓ "Bộ kiểm thử của em ra sao?"
 
-> "Em có 2 tầng. **Tầng công cụ**: `tests/test_tools.py` với **90 phép kiểm tra** chạy offline miễn
+> "Em có 2 tầng. **Tầng công cụ**: `tests/test_tools.py` với **112 phép kiểm tra** chạy offline miễn
 > phí, phủ 6 nhóm từ MCP protocol đến kịch bản đầu-cuối — và nó tự sao lưu/khôi phục `data/` nên
 > không làm bẩn repo. **Tầng trace**: `tests/verify_trace.py` đối chiếu hành vi thực tế với kỳ vọng
 > từng test case, đồng thời kiểm tra **anti-hallucination** — xác minh `doctor_id` có nằm trong
@@ -594,13 +646,21 @@ Kiểm tra nhanh: mở `http://localhost:8080/api/health` — phải thấy JSON
 
 ⑤ Cho tôi đặt lịch khoa Ung bướu với bác sĩ BS999 nhé.
    → NOT_FOUND, Agent từ chối trung thực, không bịa
+
+⑥ Tôi là BN2024007, dạo này đau nửa đầu trở lại. Bạn đặt lịch khám giúp tôi nhé.
+   → Agent tra cứu nhưng KHÔNG đặt, trình bày khung trống rồi HỎI LẠI
+     (human-in-the-loop — rất đáng show)
+
+⑦ Tôi là BN2024002, cho tôi xem các lịch hẹn hiện tại và hủy giúp tôi.
+   → list_my_appointments → cancel_appointment, khung giờ được trả về lịch trống
 ```
 
 ### Lệnh tra nhanh
 
 ```powershell
 .\.venv\Scripts\python.exe tests\reset_data.py     # Khôi phục dữ liệu
-.\.venv\Scripts\python.exe tests\test_tools.py     # 90 phép kiểm thử
+.\.venv\Scripts\python.exe tests\test_tools.py     # 112 phép kiểm thử tầng công cụ
+.\.venv\Scripts\python.exe tests\verify_trace.py   # 82 tiêu chí kiểm định trace log
 .\.venv\Scripts\python.exe src\mcp_server.py       # Kiểm tra MCP Server
 .\start_demo.ps1                                    # Khởi động demo
 .\start_demo.ps1 -Mock                              # Demo offline
