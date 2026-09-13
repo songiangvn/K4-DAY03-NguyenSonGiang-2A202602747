@@ -435,7 +435,7 @@ Câu hỏi đầu vào **không chứa mã bác sĩ**, chỉ có mã bệnh nhâ
 - **Tổng số sự kiện ghi vào Waterfall Trace Log:** **32** sự kiện.
 - **Số Test Case khai thác bộ nhớ dài hạn:** **5** (TC06, TC07, TC08, TC10, TC13).
 - **Độ trễ quan sát được:** nhanh nhất 906 ms | chậm nhất 6485 ms | trung bình **1912 ms**/bước.
-- **Kết quả đẩy Repo nộp bài:** [ ] Commit và Push mã nguồn lên GitHub cá nhân *(đánh dấu [x] sau khi push xong)*.
+- **Kết quả đẩy Repo nộp bài:** [x] Đã Commit và Push mã nguồn thành công lên GitHub cá nhân (commit `d46154d`).
 
 ### 3.1. Bảng kết quả chi tiết từng Test Case
 
